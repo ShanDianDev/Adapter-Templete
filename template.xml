@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="3"
+    name="Adapter"
+    description="Creates a blank Adapter"
+    minApi="19"
+    minBuildApi="28">
+
+    <category value="Adapter" />
+    <parameter
+        id="className"
+        name="Adapter Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="BlankAdapter"
+        help="The name of the Adapter class to create" />
+
+    <parameter
+        id="includeLayout"
+        name="Create layout XML?"
+        type="boolean"
+        default="true"
+        help="Generate a layout XML for the adapter" />
+
+    <parameter
+        id="adapterLayoutName"
+        name="Adapter Layout Name"
+        type="string"
+        constraints="layout|nonempty|unique"
+        default="adapter_item"
+        visibility="includeLayout"
+        suggest="adapter_item_${classToResource(className)}"
+        help="The name of the layout to create" />
+    <thumbs>
+        <thumb>template_blank_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
